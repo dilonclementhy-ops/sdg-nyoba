@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SDG Project</title>
+
+<style>
+body{
+  font-family: Arial;
+  background:#eef3ff;
+  margin:0;
+}
+
+}
+
+.topbar span{
+  cursor:pointer;
+  opacity:.8;
+}
+
+.topbar span:hover{
+  opacity:1;
+  text-decoration:underline;
+}
+
+/* Subline text */
+.subline{
+  display:flex;
+  justify-content:center;
+  gap:40px;
+  padding:20px;
+  background:white;
+  font-size:18px;
+}
+
+.subline span{
+  cursor:pointer;
+  position:relative;
+}
+
+.subline span::after{
+  content:'';
+  position:absolute;
+  bottom:-5px;
+  left:0;
+  width:0;
+  height:3px;
+  background:#0b3cff;
+  transition:.4s;
+}
+
+.subline span:hover::after{
+  width:100%;
+}
+
+/* Pages */
+.page{
+  display:none;
+  padding:40px;
+  animation:fade .6s;
+}
+
+.page.active{
+  display:flex;
+  gap:40px;
+}
+
+.text{flex:1;}
+.image{flex:1;}
+
+.image img{
+  width:100%;
+  border-radius:15px;
+}
+
+@keyframes fade{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
+}
+</style>
+</head>
+<body>
+
+
+<!-- Subline (Click these) -->
+<div class="subline">
+  <span onclick="openTab('sdg1','No Poverty')">Background</span>
+  <span onclick="openTab('sdg2','Zero Hunger')">Our Product</span>
+  <span onclick="openTab('sdg3','Good Health')">gatau</span>
+</div>
+
+<!-- Pages -->
+<div id="sdg1" class="page">
+  <div class="text">
+    <h2>Background</h2>
+    <p>Sampah plastik menjadi salah satu masalah lingkungan terbesar di Indonesia.
+    Menurut survei dari NPAP yang kami ambil dari website UNESA sampah plastik di Indonesia mencapai 12,4 juta ton per tahun. Sehingga untuk memenuhi dan turut membantu kegiatan leading green print kami memutuskan untuk melakukan pencarian mengenai masalah lingkungan terbesar di Indonesia yaitu sampah plastik. Oleh sebab itu kelompok kami memilih untuk membuat produk bahan bakar minyak yang kami namakan Ecoplas Fuel.</p>
+  </div>
+  <div class="image">
+    <img src="istockphoto-927987734-612x612.jpg">
+  </div>
+</div>
+
+<div id="sdg2" class="page">
+  <div class="text">
+    <h2>Our Product</h2>
+    <p>Achieve food security and improved nutrition.</p>
+  </div>
+  <div class="image">
+    <img src="https://images.unsplash.com/photo-1506806732259-39c2d0268443">
+  </div>
+</div>
+
+<div id="sdg3" class="page">
+  <div class="text">
+    <h2>Gatau</h2>
+    <p>Ensure healthy lives and promote well-being.</p>
+  </div>
+  <div class="image">
+    <img src="https://images.unsplash.com/photo-1580281657527-47f249e8f7c5">
+  </div>
+</div>
+
+<script>
+function openTab(pageId, title){
+  // hide all pages
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+
+  // show selected
+  document.getElementById(pageId).classList.add("active");
+
+  // add new tab in top bar
+  let tab = document.createElement("span");
+  tab.innerText = title;
+  tab.onclick = () => openTab(pageId, title);
+  document.getElementById("topbar").appendChild(tab);
+}
+</script>
+
+</body>
+</html>
